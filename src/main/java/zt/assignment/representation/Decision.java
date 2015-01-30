@@ -2,17 +2,27 @@ package zt.assignment.representation;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class DecisionRepresentation {
+public class Decision {
     private boolean accepted;
     private String reason;
 
-    public DecisionRepresentation() {
+    public Decision() {
     }
 
-    public DecisionRepresentation(boolean accepted, String reason) {
+    private Decision(boolean accepted, String reason) {
         this.accepted = accepted;
         this.reason = reason;
     }
+
+    public static Decision reject(String reason) {
+        return new Decision(false, reason);
+    }
+
+    public static Decision accept() {
+        return new Decision(true, "ok");
+    }
+
+
 
     @JsonProperty
     public boolean isAccepted() {
