@@ -9,8 +9,11 @@ import org.junit.Test;
 import zt.assignment.RiskAssessmentApplication;
 import zt.assignment.RiskAssessmentConfiguration;
 import zt.assignment.representation.Decision;
+import zt.assignment.representation.Transaction;
 
-public class DecisionFT {
+import javax.ws.rs.core.MediaType;
+
+public class RiskAssessmentFunctionalTest {
 
     @ClassRule
     public static final DropwizardAppRule<RiskAssessmentConfiguration> rule = new DropwizardAppRule<RiskAssessmentConfiguration>(RiskAssessmentApplication.class, null);
@@ -19,7 +22,8 @@ public class DecisionFT {
     public void should_return_200_OK_as_status_code() {
         Client client = new Client();
         WebResource resource = client.resource(String.format("http://localhost:%d/decision", rule.getLocalPort()));
-        Decision response = resource.post(Decision.class);
+        Transaction transaction = new Transaction("email@email.com", "firstName", "lastName", 1);
+        Decision response = resource.entity(transaction, MediaType.APPLICATION_JSON_TYPE).post(Decision.class);
         Assertions.assertThat(response.isAccepted()).isTrue();
         Assertions.assertThat(response.getReason()).isEqualTo("ok");
     }

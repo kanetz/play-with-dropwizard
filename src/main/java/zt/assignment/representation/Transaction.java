@@ -18,22 +18,22 @@ public class Transaction {
         this.amount = amount;
     }
 
-    @JsonProperty
+    @JsonProperty("email")
     public String getEmail() {
         return email;
     }
 
-    @JsonProperty
+    @JsonProperty("first_name")
     public String getFirstName() {
         return firstName;
     }
 
-    @JsonProperty
+    @JsonProperty("last_name")
     public String getLastName() {
         return lastName;
     }
 
-    @JsonProperty
+    @JsonProperty("amount")
     public int getAmount() {
         return amount;
     }

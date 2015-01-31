@@ -22,14 +22,12 @@ public class Decision {
         return new Decision(true, "ok");
     }
 
-
-
-    @JsonProperty
+    @JsonProperty("accepted")
     public boolean isAccepted() {
         return accepted;
     }
 
-    @JsonProperty
+    @JsonProperty("reason")
     public String getReason() {
         return reason;
     }

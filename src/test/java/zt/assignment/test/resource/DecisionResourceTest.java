@@ -1,17 +1,17 @@
 package zt.assignment.test.resource;
 
 import io.dropwizard.testing.junit.ResourceTestRule;
-import static org.fest.assertions.api.Assertions.*;
 import org.junit.Rule;
 import org.junit.Test;
-import static org.mockito.Mockito.*;
-
 import zt.assignment.representation.Decision;
 import zt.assignment.representation.Transaction;
 import zt.assignment.resource.DecisionResource;
 import zt.assignment.service.CustomerDebtService;
 
 import javax.ws.rs.core.MediaType;
+
+import static org.fest.assertions.api.Assertions.assertThat;
+import static org.mockito.Mockito.*;
 
 public class DecisionResourceTest {
     private final String email = "my@email.com";

@@ -4,6 +4,7 @@ import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import zt.assignment.resource.DecisionResource;
+import zt.assignment.service.CustomerDebtService;
 
 public class RiskAssessmentApplication extends Application<RiskAssessmentConfiguration> {
 
@@ -18,6 +19,6 @@ public class RiskAssessmentApplication extends Application<RiskAssessmentConfigu
     @Override
     public void run(RiskAssessmentConfiguration riskAssessmentConfiguration, Environment environment) throws Exception {
         environment.healthChecks().register("Risk Assessment Service", new RiskAssessmentHealthCheck());
-        environment.jersey().register(DecisionResource.class);
+        environment.jersey().register(new DecisionResource(new CustomerDebtService()));
     }
 }
